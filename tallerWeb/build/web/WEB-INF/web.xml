@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+    <servlet>
+        <servlet-name>usuariosController</servlet-name>
+        <servlet-class>controllers.usuariosController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>productosController</servlet-name>
+        <servlet-class>controllers.productosController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>PedidosController</servlet-name>
+        <servlet-class>controllers.PedidosController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>usuariosController</servlet-name>
+        <url-pattern>/usuarios</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>productosController</servlet-name>
+        <url-pattern>/productos</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PedidosController</servlet-name>
+        <url-pattern>/Pedidos</url-pattern>
+    </servlet-mapping>
+    <session-config>
+        <session-timeout>
+            30
+        </session-timeout>
+    </session-config>
+</web-app>

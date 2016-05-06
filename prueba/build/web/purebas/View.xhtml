@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewPurebasTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewPurebasLabel_idpurebas}"/>
+                    <h:outputText value="#{purebasController.selected.idpurebas}" title="#{bundle.ViewPurebasTitle_idpurebas}"/>
+                    <h:outputText value="#{bundle.ViewPurebasLabel_dato}"/>
+                    <h:outputText value="#{purebasController.selected.dato}" title="#{bundle.ViewPurebasTitle_dato}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{purebasController.destroyAndView}" value="#{bundle.ViewPurebasDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewPurebasEditLink}"/>
+                <br />
+                <h:commandLink action="#{purebasController.prepareCreate}" value="#{bundle.ViewPurebasCreateLink}" />
+                <br />
+                <h:commandLink action="#{purebasController.prepareList}" value="#{bundle.ViewPurebasShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewPurebasIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
