@@ -13,11 +13,16 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <script src="js/funcions.js" type="text/javascript"></script>
+        <script src="js/bootstrap.js" type="text/javascript"></script>
+        <script src="js/jquery-1.12.3.min.js" type="text/javascript"></script>
+        <link href="css/bootstrap.css" rel="stylesheet" type="text/css"/>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Pedido</title>
     </head>
     <link href="css/bootstrap.css" rel="stylesheet" type="text/css"/>
     <body>
+        <div>
         <h1>pedido</h1>
         <script src="js/jquery-1.12.3.min.js" type="text/javascript"></script>
         <script src="js/bootstrap.js" type="text/javascript"></script>
@@ -32,19 +37,34 @@
             
             
         </script>
-        <form name="pedido" method="post" action="Pedidos" >
+        <form id="pedido" name="pedido" method="post" action="Pedidos" >
             <fieldset>
                 <legend>Datos del Producto</legend>
-                
-                mesa:     <input type="text" name="txtMesa" required="*" /><br>
-                percio Total:     <input type="number" name="txtPrecio" required="*" /><br>
-                Cheff:   <select name="ddlChef">
+                <div>
+                    mesa:     
+                </div>
+                <div>
+                    <input type="text" name="txtMesa" required="*" /><br>
+                </div>
+                <div>
+                    percio Total:     
+                </div>
+                <div>
+                    <input type="number" name="txtPrecio" required="*" /><br>
+                </div>
+                <div>
+                    Cheff:   
+                </div>
+                <div>
+                    <select name="ddlChef">
                     <% while (l.hasNext()){
                                 Usuarios usuario =  l.next();
                     %>
                                             <option value="<% out.print(usuario.getIdusuarios()); %>"><%  out.print(usuario.getNombre());%></option>
                     <% } %>            
-                </select><br>
+                    </select><br>
+                </div>
+                
                 
                 <fieldset>
                     <legend>Datos Productos</legend>
@@ -55,14 +75,22 @@
                                 ListIterator<Productos> p = pros.listIterator();
                                
                     %>
-                        Producto: <select name="ddlProductos" id="ddlProductos">
+                <div>
+                    Producto: 
+                </div> 
+                <div>
+                    <select name="ddlProductos" id="ddlProductos">
                     <% while (p.hasNext()){
                                 Productos pro =  p.next();
                     %>
                                             <option value="<% out.print(pro.getIdproductos()); %>"><%  out.print(pro.getNombreProducto());%></option>
                     <% } %>            
-                                </select>
+                    </select>
+                </div> 
+                    <div>
+                        
                             <input type="button" name="btnAgregar" id="btnAgregar" value="agregarProducto" /><br>
+                    </div>
                             <input type="hidden" name="hdfProductos" id="hdfProductos" value="0"/><br><br>
                             <div id="divProductos">
                             </div>
@@ -74,5 +102,6 @@
             </fieldset>
             <input type="submit" name="btnGuardar" title="guardar" />
         </form>
+        </div>
     </body>
 </html>
