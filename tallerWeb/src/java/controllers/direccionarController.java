@@ -8,27 +8,17 @@ package controllers;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import Entity.Pedidos;
-import Entity.Pedidodetalle;
-import Entity.Productos;
-import Entity.Usuarios;
-import java.util.AbstractCollection;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-import org.apache.jasper.tagplugins.jstl.ForEach;
 
 /**
  *
  * @author mateo
  */
-public class PedidosController extends HttpServlet {
+@WebServlet(name = "direccionarController", urlPatterns = {"/direccionar"})
+public class direccionarController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -39,45 +29,42 @@ public class PedidosController extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    
-    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        String hdfProduc=request.getParameter("hdfProductos");
-        String [] somelist= hdfProduc.split(",");
-        
-        EntityManagerFactory emf =Persistence.createEntityManagerFactory("tallerWebPU");
-        EntityManager em = emf.createEntityManager();
-        
-        em.getTransaction().begin();
-        Usuarios usu =em.find( Usuarios.class,(Integer.parseInt(request.getParameter("ddlChef"))));
-        Pedidos ped = new Pedidos();
-        ped.setMesa(request.getParameter("txtMesa"));
-        ped.setIdChef(usu);
-        ped.setValorTotal(Long.parseLong(request.getParameter("txtPrecio")));
-        
-        
-        em.persist(ped);
-        em.getTransaction().commit();
-        
-        Collection<Pedidodetalle> pedidodetalleCollection = new ArrayList<Pedidodetalle>();
-        for (int i = 0; i < somelist.length; i++) {
-            if(!somelist[i].equals("0"))
-            {
-            Pedidodetalle e= new Pedidodetalle();
-            e.setIdPedido(ped);
-            Productos pr =em.find( Productos.class,(Integer.parseInt(somelist[i])));
-            e.setIdProducto(pr);
-            pedidodetalleCollection.add(e);
-            em.getTransaction().begin();
-            em.persist(e);
-            em.getTransaction().commit();
-            }
+        String usuer="";
+        String productos="";
+        String pedido="";
+        try{
+        usuer =request.getParameter("hdfUsuer");
+        }catch(Exception e)
+        {
+        }
+        try
+        {
+        productos =request.getParameter("hdfProductos");
+        }catch(Exception e)
+        {
+        }
+        try
+        {
+        pedido =request.getParameter("hdfPedidos");
+        }catch(Exception e)
+        {
         }
         
-        
-        
+        if(usuer  != null)
+        {
+            request.getRequestDispatcher("usuario.jsp").forward(request, response);
+        }else if(productos != null)
+        {   
+            request.getRequestDispatcher("producto.jsp").forward(request, response);
+        }else if(pedido != null)
+        {
+            request.getRequestDispatcher("pedido.jsp").forward(request, response);
+        }else 
+        {
+            request.getRequestDispatcher("contex.jsp").forward(request, response);
+        }
         
         
         

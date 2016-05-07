@@ -2,8 +2,8 @@
 
 <%@page import="java.util.ListIterator"%>
 <%@page contentType="text/html" pageEncoding="UTF-8" import="javax.persistence.EntityManager,javax.persistence.EntityManagerFactory,javax.persistence.Persistence,controllers.usuariosController,Entity.Usuarios,Entity.Productos,java.util.List"  %>
-<%        
-                               EntityManagerFactory emf =Persistence.createEntityManagerFactory("tallerWebPU");
+<%
+                                EntityManagerFactory emf =Persistence.createEntityManagerFactory("tallerWebPU");
                                 EntityManager em = emf.createEntityManager();
                                 List<Usuarios> users=  (List<Usuarios> )em.createNamedQuery("Usuarios.findAll").getResultList();
                                 ListIterator<Usuarios> l = users.listIterator();
@@ -24,8 +24,9 @@
         <script type="text/javascript" >
             $(document).ready(function(){
             $('#btnAgregar' ).click(function() {
-                                            alert($('#ddlProductos').val());
-                                            $('#divProductos').append($('#ddlProductos').val())
+                                            
+                                            $('#divProductos').append($('#ddlProductos option:selected').text()).append('<br>');
+                                            $('#hdfProductos').val(($('#hdfProductos').val())+','+($('#ddlProductos').val()));
                                           });
             });
             
@@ -54,7 +55,7 @@
                                 ListIterator<Productos> p = pros.listIterator();
                                
                     %>
-                        Producto: <select name="ddlProductos">
+                        Producto: <select name="ddlProductos" id="ddlProductos">
                     <% while (p.hasNext()){
                                 Productos pro =  p.next();
                     %>
@@ -62,7 +63,7 @@
                     <% } %>            
                                 </select>
                             <input type="button" name="btnAgregar" id="btnAgregar" value="agregarProducto" /><br>
-                            <input type="hidden" name="hdfProductos" value="1"/><br><br>
+                            <input type="hidden" name="hdfProductos" id="hdfProductos" value="0"/><br><br>
                             <div id="divProductos">
                             </div>
                             

@@ -16,22 +16,64 @@
     <body>
         <script src="js/jquery-1.12.3.min.js" type="text/javascript"></script>
         <script src="js/bootstrap.js" type="text/javascript"></script>
+        <script src="js/funcions.js" type="text/javascript"></script>
+        <div style="float: left;align-items: flex-start">
         <h1>Usuario</h1>
-        <form name="usuario" method="post" action="usuarios" >
+        <form id="formusu" name="usuario" method="post" action="usuarios" >
             <fieldset>
                 <legend>Datos Basicos</legend>
-            Nombres:     <input type="text" name="txtNombres" /><br>
-            Apellidos   <input type="text" name="txtApellidos" /><br>
-            Identificacion: <input type="text" name ="txtIdentificacion" /><br>
-            Telefono: <input type="text" name ="txtTelefono" /><br>
+                    <div style="float:left;width: 35%;clear: both">
+                        Nombres:    
+                    </div>  
+                    <div style="float:left;width: 35%">
+                        <input type="text" name="txtNombres" /><br>
+                    </div>
+                    <div style="float:left;width: 35%;clear: both">
+                        Apellidos  
+                    </div>
+                    <div style="float:left;width: 35%">
+                        <input type="text" name="txtApellidos" /><br>
+                    </div>
+                    <div style="float:left;width: 35%;clear: both">
+                        Identificacion:
+                    </div>
+                    <div style="float:left;width: 35%">
+                        <input type="text" name ="txtIdentificacion" /><br>
+                    </div>
+                    <div style="float:left;width: 35%;clear: both">
+                         Telefono: 
+                    </div>
+                    <div style="float:left;width: 35%">
+                        <input type="text" name ="txtTelefono" /><br>
+                    </div>
+            
+             
             </fieldset>
             <fieldset>
                 <legend>Ingreso de usuario</legend>
-                user name: <input type="text" name="txtUserName"/><br>
-                Password: <input type="password" name ="txtPassword"/><br>
-                confirm password : <input type="password" name="txtconfirPass"/><br>
+                
+                <div style="float:left;width: 35%;clear: both">
+                    user name: 
+                </div>
+                <div style="float:left;width: 35%">
+                    <input type="text" name="txtUserName"/><br>
+                </div>
+                <div style="float:left;width: 35%;clear: both">
+                    Password: 
+                </div>
+                <div style="float:left;width: 35%">
+                    <input type="password" name ="txtPassword"/><br>
+                </div>
+                
+                <div style="float:left;width: 35%;clear: both">
+                    confirm: 
+                </div>
+                <div style="float:left;width: 35%">
+                    <input type="password" name="txtconfirPass"/><br>
+                </div>
             </fieldset>    
-            <input type="submit" name="btnGuardar" title="guardar" />
+            <input type="button" name="btnGuardar" value="Guardar" onclick="sub('formusu')" />
         </form>
+        </div>
     </body>
 </html>
